@@ -36,19 +36,20 @@
 
 ; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+(def invert-grid
+  (partial apply map list))
+
+(def move-down
+  (comp (partial invert-grid) (partial move-grid-right) (partial invert-grid))
+  )
 
 (defn move-grid-down
   "Moves an entire grid down"
   [grid]
-  grid)
-
-; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-(def invert-grid 
-  (partial apply map list)
+  (move-down grid)
   )
 
-(invert-grid '((2 2 0 0) (4 4 0 2) (8 0 4 2) (2 2 4 16)))
+; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 (def move-up 
   (comp (partial invert-grid) (partial move-grid-left) (partial invert-grid))
